@@ -23,13 +23,14 @@ function(e, id)
         ["19705"]=true, --Skullsplitter Coin
         ["19706"]=true  --Bloodscalp Coin
     }
-    local action
-    
+    local howToRoll = nil
     if coinIds[itemId] then
-        action = aura_env.roll("coins")
-        RollOnLoot(id, action)
+        howToRoll = aura_env.roll("coins")
     elseif bijouIds[itemId] then
-        action = aura_env.roll("bijous")
-        RollOnLoot(id, action)
+        howToRoll = aura_env.roll("bijous")
+    end
+
+    if howToRoll ~= nil then
+        RollOnLoot(id, howToRoll)
     end
 end
